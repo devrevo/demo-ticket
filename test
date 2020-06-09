@@ -1,0 +1,168 @@
+<li class="nav-item">
+                 {% if client.fileName %}
+                    <img src="{{vich_uploader_asset(client,'imageFile')}}" style='width: 1cm ;height: 1cm;margin-left : 16cm'>
+                {% endif %}
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{path('security_logout')}}">
+                        {{ client.Nom }} {{client.Prenom}} 
+                    </a>
+                </li>
+
+
+ <span class="contact100-form-title"> Login </span>
+    <form action="{{ path('security_login') }}" method="post">
+
+        <div class="container">
+            <label for="_username"><b>Email</b></label>
+            <input type="text" placeholder="Enter Username" required name="_username" >
+
+            <label for="_pasw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" required name="_password" >
+
+            <button type="submit">Login</button>
+            </br>
+            <a href="{{path('security_registration')}}">S'enregistrer</a>
+            <label>
+            </label>
+        </div>
+        <div class="container" style="background-color:#f1f1f1">
+            <button type="button" class="cancelbtn">Cancel</button>
+        </div>
+    </form>
+
+
+        <span class="contact100-form-title"> Registration </span>
+    
+    {{ form_start(formClient) }}
+    {{ form_widget(formClient._token) }}
+    {{ form_row(formClient.imageFile) }}
+    {{ form_row(formClient.Nom) }}
+    {{ form_row(formClient.Prenom) }}
+    {{ form_row(formClient.Telephone) }}
+    {{ form_row(formClient.Adresse) }}
+        <h6>Account Information</h6>
+           
+        
+        
+        <h6>User Information</h6>
+    {{ form_start(formCompte) }}
+    {{ form_widget(formCompte._token) }}
+        {{ form_row(formCompte.email) }} 
+        {{ form_row(formCompte.Username) }} 
+        {{ form_row(formCompte.password) }} 
+        {{ form_row(formCompte.confirm_password) }} 
+        <div class="container-contact100-form-btn">
+            <button class="contact100-form-btn">
+                <span>
+                    Submit
+                    <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+                </span>
+            </button>
+        </div>
+        {{ ok }}
+        {{ ok1 }} 
+        {{ createdId }} 
+    {{ form_end(formCompte) }}
+    {{ form_end(formClient) }}
+    Result
+EDIT ON
+<div class="profile-pane">
+  <div class="column  column--alpha">
+    <div class="profile-pane__header">
+      <a href="https://twitter.com/_joshnh">
+        <div class="profile-pane__header__avatar"></div>
+        <p class="profile-pane__header__name">Joshua Hibbert</p>
+        <p class="profile-pane__header__username">@_joshnh</p>
+      </a>
+    </div>
+    <div class="profile-pane__profile-summary">
+      <ul>
+        <li>
+          <a href="javascript:void(0);">
+            <dl>
+              <dd>7,524</dd>
+              <dt>Tweets</dt>
+            </dl>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:void(0);">
+            <dl>
+              <dd>35</dd>
+              <dt>Following</dt>
+            </dl>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:void(0);">
+            <dl>
+              <dd>782</dd>
+              <dt>Followers</dt>
+            </dl>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="profile-pane__new-tweet">
+      <input type="text" placeholder="Compose new Tweet&hellip;">
+    </div>
+  </div>
+  <div class="column  column--beta">
+    <div class="profile-pane__shortcuts">
+      <ul>
+        <li class="messages">
+          <a href="javascript:void(0);">&#xf0e0;</a>
+        </li>
+        <li class="connect  notification">
+          <a href="javascript:void(0);">@</a>
+        </li>
+        <li class="stars">
+          <a href="javascript:void(0);">&#xf005;</a>
+        </li>
+        <li class="lists">
+          <a href="javascript:void(0);">&#xf0ca;</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+
+
+
+
+<div class="outer-div">
+    <div class="mid-div">
+        <div class="center-div">
+
+        {% if client.fileName %}
+            <img src="{{vich_uploader_asset(client,'imageFile')}}" style='width: 4cm;height:auto;'>
+        {% endif %}
+        <label> Numero : </label>
+        {{ client.id }}
+        </br>
+         <label> Nom : </label>
+        {{ client.Nom }}
+        </br>
+         <label> Prenom : </label>
+        {{ client.Prenom }}
+        </br>
+         <label> Telephone : </label>
+        0{{ client.Telephone }}
+        </br>
+         <label> Adresse : </label>
+        {{ client.Adresse }}
+        </br>
+        <button type="submit"> <a href="{{path('edit_profile')}}">  Edit Profile</a> </button>
+        </div>
+        
+    </div> 
+</div>
+
+<h4 class="card-title">Card title</h4>
+        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a>

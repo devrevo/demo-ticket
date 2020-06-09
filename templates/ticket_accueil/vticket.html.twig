@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+            <table style="margin-top : 30px;padding: 2px;" class="table table-hover">
+            <thead>
+              <tr class="table-primary">
+                <th >Titre</th>
+                <th >Nom Client</th>
+                <th>Categorie</th>
+                <th >Etat</th>
+                <th >Date de creation</th>
+                <th></th>
+              </tr>
+              </thead>
+              <tbody style="background-color : white;">
+              {% for ticket in tickets %}
+                {% if ticket.EtatTicket is same as("Resolu") %}
+                  <tr style="font-color = Black;">
+                    <td>
+                      {{ ticket.title }}
+                    </td>
+                    <td>
+                      {{ ticket.client.Nom }} {{ ticket.client.Prenom }}
+                    </td>
+                    <td>
+                      {{ ticket.Categorie }}
+                    </td>
+                    <td>
+                      {{ ticket.EtatTicket }}
+                    </td>
+                    <td>
+                      {{ ticket.createdAt | date('Y-m-d H:i')}}
+                    </td>
+                    <td >
+                      <button class="btn btn-secondary">
+                        <a href="{{ path('ticket_show',{'id': ticket.id }) }}" >
+                            Edit
+                        </a>
+                      </button>
+                    </td>
+                  </tr>
+                {% endif %}
+              {% endfor %}
+              <tbody>
+              </table>
+{% endblock %}

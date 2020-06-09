@@ -1,0 +1,44 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Clients{% endblock %}
+
+{% block body %}
+    </br>
+    <button class="btn btn-secondary">
+        <a href="/add-client" >
+            + Ajouter Client
+        </a>
+    </button>
+    <table style="margin-top : 30px;padding: 2px;" class="table table-hover">
+            <thead>
+              <tr class="table-primary">
+                <th>id</th>
+                <th>Nom </th>
+                <th>Prenom</th>
+                <th>Telephone</th>
+                <th>Tickets</th>
+              </tr>
+              </thead>
+              <tbody style="background-color : white;">
+              {% for client in clients %}
+                  <tr style="font-color = Black;">
+                    <td >
+                      {{ client.id }}
+                    </td>
+                    <td>
+                      {{ client.Nom }} 
+                    </td>
+                    <td>
+                      {{ client.prenom }}
+                    </td>
+                    <td>
+                      {{ client.Telephone }}
+                    </td>
+                    <td>
+                      <a href="{{path('ticketsClient',{'id': client.id })}}"> Read More </a>
+                    </td>
+                  </tr>
+                {% endfor %} 
+                <tbody>  
+              </table>
+{% endblock %}

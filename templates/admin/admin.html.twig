@@ -1,0 +1,61 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block body %}
+<h5>Admin</h5>
+</br>
+{% if tickets|length > 0 %}
+     <table style="margin-top : 30px;padding: 2px;" class="table table-hover">
+            <thead>
+              <tr class="table-light">
+                <th>Titre</th>
+                <th>Categorie</th>
+                <th>Etat</th>
+                <th>Date de creation</th>
+                <th>Technicien</th>
+                <th></th>
+              </tr>
+              </thead>
+              <tbody style="background-color : white;">
+
+                {% for ticket in tickets %}
+                        {% if ticket.technicien is same as(null) %}
+                        <tr style="font-color = Black;" class="table-active">
+                            <td>
+                            {{ ticket.title }} {{ tickets|length }}
+                            </td>
+                            <td>
+                            {{ ticket.Categorie }}
+                            </td>
+                            <td>
+                            {{ ticket.EtatTicket }}
+                            </td>
+                            <td >
+                            {{ ticket.createdAt | date('Y-m-d H:i')}}
+                            </td>
+                            <form action="{{ path('admin_home',{'id': ticket.id }) }}" method="post" name="form_tech">
+                            <td >
+                            <select class="form-control" name="techs">
+                                    <option disabled selected value> -- select an option -- </option>
+                                    {% for tech in techs %}
+                                        <option value="{{ tech.id }}">{{ tech.prenom }} {{ tech.Nom }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                            <td>
+                            <button type="submit" class="btn btn-secondary">
+                                    Submit 
+                            </button>
+                            </td>
+                            </form>
+                        </tr>
+                        {% endif %}
+                {% endfor %}  
+            
+              <tbody> 
+            </table>
+        {% else %}
+        <tr>
+            <h5> No results <h5>
+        </tr>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Techniciens{% endblock %}
+
+{% block body %}
+    </br>
+    <button class="btn btn-secondary">
+        <a href="{{ path('page_technicienadd') }}" >
+            + Ajouter Technicien
+        </a>
+    </button>
+    <table style="margin-top : 30px;padding: 2px;" class="table table-hover">
+            <thead>
+              <tr class="table-primary">
+                <th>id</th>
+                <th>Nom </th>
+                <th>Prenom</th>
+                <th>Telephone</th>
+                <th></th>
+              </tr>
+              </thead>
+              <tbody style="background-color : white;">
+              {% for tech in techs %}
+                  <tr style="font-color = Black;">
+                    <td >
+                      {{ tech.id }}
+                    </td>
+                    <td >
+                      {{ tech.Nom }} 
+                    </td>
+                    <td>
+                      {{ tech.prenom }}
+                    </td>
+                    <td>
+                      {{ tech.Telephone }}
+                    </td>
+                     <td>
+                     <button class="btn btn-secondary">
+                        <a href="{{ path('techinf',{'id': tech.id }) }}" >
+                            Edit
+                        </a>
+                      </button>
+                    </td>
+                  </tr>
+                
+                {% endfor %}
+                <tbody>  
+              </table>
+{% endblock %}

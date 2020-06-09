@@ -1,0 +1,51 @@
+{% extends 'techbase.html.twig' %}
+
+{% block body %}
+<h5>Technicien</h5>
+</br>
+{% if tickets|length > 0 %}
+     <table style="margin-top : 30px;padding: 2px;" class="table table-hover">
+            <thead>
+              <tr class="table-primary">
+                <th>Titre</th>
+                <th>Categorie</th>
+                <th>Etat</th>
+                <th>Date de creation</th>
+                <th>Technicien</th>
+              </tr>
+              </thead>
+              <tbody style="background-color : white;">
+                {% for ticket in tickets %}
+                        <tr style="font-color = Black;">
+                            <td>
+                            {{ ticket.title }}
+                            </td>
+                            <td>
+                            {{ ticket.Categorie }}
+                            </td>
+                            <td>
+                            <form action="{{ path('tech_home',{'id': ticket.id }) }}" method="post" name="form_etat">
+                                <select class="form-control" name="etats" onchange="this.form.submit()">
+                                <option disabled selected value> -- select an option -- </option>
+                                        {% for etat in etats %}
+                                            <option value="{{ etat.titre }}">{{ etat.titre }}</option>
+                                        {% endfor %}
+                                </select>
+                            </form>
+                            </td>
+                            <td >
+                            {{ ticket.createdAt | date('Y-m-d H:i')}}
+                            </td>
+                            
+                            <td >
+                                {{ ticket.technicien.Nom }} {{ ticket.technicien.prenom }} 
+                            </td>
+                        </tr>
+                    
+                {% endfor %}  
+              <tbody> 
+            </table>
+            {% else %}
+                <h5>  No results <h5>
+            {% endif %} 
+{% endblock %}

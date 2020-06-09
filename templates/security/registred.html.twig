@@ -1,0 +1,12 @@
+{% extends 'inscriptionbase.html.twig' %}
+{% block title %}Registred !
+{% endblock %}
+{% block body %}
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <h3> Vous êtes enregistré avec succès !</h3>
+    <h4>Veuillez se connecter par <a href="{{path('security_login')}}"> ici  </a><h4>
+  </div>
+</div>
+{% endblock %}  

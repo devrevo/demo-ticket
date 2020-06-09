@@ -1,0 +1,41 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Clients{% endblock %}
+
+{% block body %}
+    <table style="margin-top : 30px;" class="table table-hover">
+    <thead>
+      <tr class="table-primary">
+        <th style="float:left; font-size:30px;text-transform: uppercase;">Informations</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody style="background-color : white;">
+        <tr>
+        <td>
+          Numero 
+        </td>
+        <td >
+         {{ tech.id }} 
+        </td>
+        </tr>
+        <tr>
+        <td>
+          Nom Technicien
+        </td>
+        <td>
+          {{ tech.Nom }} {{ tech.prenom }}
+        </td>
+        </tr>
+        <tr >
+        <td>
+           Telephone
+        </td>
+        <td>
+          {{ tech.Telephone}} 
+        </td>
+        </tr>
+    </tbody>
+   </table>
+</section>
+{% endblock %}

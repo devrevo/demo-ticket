@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+  <table style="margin-top : 30px;" class="table table-hover">
+    <thead>
+      <tr class="table-primary">
+        <th ><h5>Informations</h5></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody style="background-color : white;">
+      <tr class="table-primary">
+        <td>
+          Numero 
+        </td>
+        <td >
+         {{ ticket.id }} 
+        </td>
+        </tr><tr class="table-secondary">
+        <td>
+          Titre 
+        </td>
+        <td>
+          {{ ticket.title }}
+        </td>
+        </tr><tr class="table-primary">
+        <td>
+           Numero Client 
+        </td>
+        <td>
+          {{ ticket.client.id }}
+        </td>
+        </tr>
+        <tr class="table-secondary">
+        <td>
+           Nom Client
+        </td>
+        <td>
+          {{ ticket.client.Nom }} {{ ticket.client.Prenom }} 
+        </td>
+        </tr><tr class="table-primary">
+        <td>
+           Numero Technicien
+        </td>
+        <td>
+          {{ ticket.technicien.id }}
+        </td>
+        </tr>
+        <tr class="table-secondary">
+        <td>
+           Nom Technicien
+        </td>
+        <td>
+          {{ ticket.technicien.Nom }} {{ ticket.technicien.Prenom }} 
+        </td>
+        </tr><tr class="table-primary">
+        <td >
+          Categorie 
+        </td>
+        <td>
+          {{ ticket.Categorie }}
+        </td>
+        </tr>
+        <tr class="table-secondary">
+        <td>
+          Etat 
+        </td>
+        <td>
+          {{ ticket.EtatTicket }}
+        </td>
+        </tr>
+        <tr class="table-primary">
+        <td >
+          Description 
+        </td>
+        <td >
+          {{ ticket.Description }}
+        </td>
+        </tr>
+        <tr class="table-secondary">
+        <td >
+          Date Creation 
+        </td>
+        <td class="col">
+          {{ ticket.createdAt | date('Y-m-d H:i')}}
+        </td>
+        </tr>
+        <tr class="table-primary">
+        <td >
+          Date Resolution :
+        </td>
+        <td >
+          {{ ticket.EndedAt | date('Y-m-d H:i')}}
+        </td>
+        </tr>
+      </tr>
+    </tbody>
+   </table>
+</section>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home Page{% endblock %}
+{% block stylesheets %}<link rel="stylesheet" href="/css/profile.css"></link>{% endblock %}
+{% block body %}
+
+<aside class="notif-card">
+  
+    
+</aside>
+<aside class="profile-card">
+  <header>
+    <!-- here’s the avatar -->
+    <a target="_blank" href="#">
+      {% if client.fileName %}
+            <img src="{{vich_uploader_asset(client,'imageFile')}}" style='width: 4cm;height:auto;'>
+        {% endif %}
+    </a>
+
+    <!-- the username -->    
+    
+            <h1 style ="text-transform: capitalize;">
+                {{ client.Nom }} {{ client.prenom}}
+            </h1>      
+    <!-- and role or location -->
+            <h2> 
+                 @{{ compte.username }}
+            </h2>
+   </header>
+             <div class="profile-bio">
+                <p>
+                    "{{ client.status }}"
+                </p>
+            </div>
+            <button type="button" class="btn btn-primary btn-lg btn-block"> <a style="color:white;" href="{{path('edit_profile')}}">Edit Profile</a></button>
+             
+</aside>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'inscriptionbase.html.twig' %}
+{% block title %}Registration
+{% endblock %}
+{% block body %}
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <h2 class="inactive underlineHover"> <a href="{{path('security_login')}}"> Sign In </a> </h2>
+    <h2 class="active"> Sign Up </h2>
+
+
+    <!-- Login Form -->
+    {{ form_start(formClient) }}
+        {{ form_widget(formClient._token) }}
+        <div class="upload-btn-wrapper">
+            <img class="image-preview-image overlay" src="/css/img/profile.png" id="output" width="200" />
+            <button class="btn">Upload a file</button>
+             {{ form_widget(formClient.imageFile,{'attr': {'accept': 'image/gif, image/jpeg, image/png','name':'fileInp'}}) }}
+        </div>
+        
+        <script type="text/javascript">
+            const fileInp = document.getElementById("client_registration_imageFile");
+            const previewcontainer = document.getElementById("preview");
+            const previewImage = document.querySelector(".image-preview-image");
+            fileInp.addEventListener("change",function(){
+                const file = this.files[0];
+                console.log(file);
+                if(file)
+                {
+                    const reader = new FileReader();
+                    previewImage.style.display = 'block';
+                    reader.addEventListener("load" ,function(){
+                        console.log(this);
+                        previewImage.setAttribute("src",this.result)
+                    });
+                    reader.readAsDataURL(file);
+                }
+            });
+        </script>
+        {{ form_widget(formClient.Nom, {'attr': {'placeholder': 'Votre nom'}}) }}
+        {{ form_widget(formClient.Prenom, {'attr': {'placeholder': 'Votre prenom'}}) }}
+        {{ form_widget(formClient.Telephone , {'attr': {'placeholder': 'Votre telephone'}}) }}
+        {{ form_widget(formClient.Adresse , {'attr': {'placeholder': 'Votre adresse'}}) }}
+
+    {{ form_start(formCompte) }}
+        {{ form_widget(formCompte._token) }}
+        {{ form_widget(formCompte.email,{'attr': {'placeholder': 'Votre email'}}) }} 
+        {{ form_widget(formCompte.Username, {'attr': {'placeholder': 'Votre nom d\'utilisateur'}}) }} 
+        {{ form_widget(formCompte.password, {'attr': {'placeholder': 'Votre mot de passe'}}) }} 
+        {{ form_widget(formCompte.confirm_password, {'attr': {'placeholder': 'Confirmer votre mot de passe'}}) }} 
+    <div id="formFooter">
+      <input type="submit" class="fadeIn fourth" value="S'enregistrer">
+    </div>
+    {{ form_end(formCompte) }}
+    {{ form_end(formClient) }}
+    <!-- Remind Passowrd -->
+  </div>
+</div>
+{% endblock %}  

@@ -1,0 +1,33 @@
+
+doctrine:
+    dbal:
+        dbname:               DBA_ticket
+        user:                 root
+        password:             root
+        # url:                  mysql://root:roots@192.168.64.4:3308/dba_ticket
+        driver:               pdo_mysql
+        # if the url option is specified, it will override the above config
+        # the DBAL driverClass option
+        # the DBAL driverOptions option
+        options:
+            foo: bar
+        memory:               true
+        unix_socket:          /Applications/MAMP/tmp/mysql/mysql.sock
+        # the DBAL wrapperClass option
+        charset:              UTF8
+        logging:              '%kernel.debug%'
+        server_version:       '5.6'
+        # IMPORTANT: You MUST configure your server version,
+        # either here or in the DATABASE_URL env var (see .env file)
+        #server_version: '5.7'
+    orm:
+        auto_generate_proxy_classes: true
+        naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
+        auto_mapping: true
+        mappings:
+            App:
+                is_bundle: false
+                type: annotation
+                dir: '%kernel.project_dir%/src/Entity'
+                prefix: 'App\Entity'
+                alias: App

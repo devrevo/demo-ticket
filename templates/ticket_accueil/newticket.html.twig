@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    
+    {{ form_start(FormTicket) }}
+    <div class="outer-div">
+        <div class="mid-div">
+            <div class="center-div">
+                    <h4> Creation du ticket
+                    </h4>
+                    <div class='form-group'>
+                        <h5 style="color:white"> Titre : </h5>
+                        {{ form_widget(FormTicket.title) }}
+                    </div>
+                    <div class='form-group'>
+                        <h5 style="color:white"> Categorie : </h5>
+                        {{ form_widget(FormTicket.Categorie) }}
+                        <!--  -->
+                    </div>
+                    <div class='form-group'>
+                        <h5 style="color:white"> Description : </h5>
+                        {{ form_widget(FormTicket.description ,{'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div >
+                    
+                        {% if EditMode %}
+                        <button style="margin-left:85%"  class="btn btn-outline-secondary">
+                                Modifier
+                        </button>
+                        {% else %}
+                        <button style="margin-left:85%"  class="btn btn-outline-secondary">
+                                Envoyer
+                        </button>
+                        {% endif %}
+                    
+                    </div>
+                    {{user}}
+                    
+            </div>
+        </div>
+    </div>    
+    {{ form_end(FormTicket) }}
+{% endblock %}

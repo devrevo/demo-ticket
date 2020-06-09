@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+            <table style="margin-top : 30px;padding: 2px;" class="table table-hover">
+            <thead>
+              <tr class="table-primary">
+                <th scope="col">Titre</th>
+                <th scope="col">Nom Client</th>
+                <th scope="col">Categorie</th>
+                <th scope="col">Etat</th>
+                <th scope="col">Date de creation</th>
+                <th></th>
+              </tr>
+              </thead>
+              <tbody style="background-color : white;">
+              {% for ticket in tickets %}
+                  <tr style="font-color = Black;" >
+                    <td >
+                      {{ ticket.title }}
+                    </td>
+                    <td>
+                      {{ ticket.client.Nom }} {{ ticket.client.Prenom }}
+                    </td>
+                    <td>
+                      {{ ticket.Categorie }}
+                    </td>
+                    <td>
+                      {{ ticket.EtatTicket }}
+                    </td>
+                    <td>
+                      {{ ticket.createdAt | date('Y-m-d H:i')}}
+                    </td>
+                    <td >
+                      <button class="btn btn-secondary">
+                        <a href="{{ path('eticket',{'id': ticket.id }) }}" >
+                            Edit
+                        </a>
+                      </button>
+                    </td>
+                  </tr>
+              {% endfor %}
+              <tbody>
+              </table>
+{% endblock %}

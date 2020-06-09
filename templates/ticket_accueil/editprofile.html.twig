@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TicketAccueilController!{% endblock %}
+
+{% block body %}
+<div class="outer-div">
+    <div class="mid-div">
+        <div class="center-div">
+            {{form_start(FormClient)}}
+      
+            {{form_widget(FormClient)}}
+
+            {{id}}  
+            {{d}} 
+            <button type="submit"> Edit </button>
+            {{form_end(FormClient)}}
+        </div>
+        
+    </div> 
+</div>
+{% endblock %}
